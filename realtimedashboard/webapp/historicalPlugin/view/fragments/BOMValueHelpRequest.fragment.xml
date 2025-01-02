@@ -1,0 +1,31 @@
+<core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog"
+                          xmlns:m="sap.m"
+                          xmlns:fb="sap.ui.comp.filterbar"
+                          xmlns:core="sap.ui.core">
+    <ValueHelpDialog id="_IDGenValueHelpDialog"
+                     title="BOM"
+                     ok=".onBOMValueHelpOkPress"
+                     cancel=".onValueHelpCancelPress"
+                     afterClose=".onValueHelpAfterClose"
+                     supportRanges="false"
+                     supportMultiselect="false"
+
+                     key="bom">
+        <filterBar>
+            <fb:FilterBar id="_IDGenFilterBar" advancedMode="false" search=".onBOMVHDiaFilterBarSearch">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem id="_IDGenFilterGroupItem1"
+						groupName="__$INTERNAL$"
+						name="bom"
+						label="BOM"
+						visibleInFilterBar="true">
+						<fb:control>
+							<m:Input id="_IDGenInput1" name="bom" />
+						</fb:control>
+					</fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </filterBar>
+
+    </ValueHelpDialog>
+</core:FragmentDefinition>

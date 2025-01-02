@@ -1,0 +1,143 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" 
+
+xmlns:html="http://www.w3.org/1999/xhtml" controllerName="company.custom.plugins.realtimedashboard.expirydate.controller.MainView" width="100%" height="100%">
+		
+        <!-- <Panel 
+                id="panelPlugin"  
+                width="100%"
+                height="100%"
+                expandable="false"
+                expanded="false"
+                accessibleRole="Region"
+                backgroundDesign="Transparent"
+                class="sapUiNoContentPadding">  
+        <headerToolbar>
+            <Toolbar height="3rem">
+                <Button
+                    id="backButton"
+                    visible="false"
+                    text="{i18n>template.back.btn}"
+                    tooltip="{i18n>template.back.tooltip}"
+                    icon="sap-icon://nav-back"
+                    press="onBackPress"/>
+                <Title id="headerTitle" text=""/>
+                <ToolbarSpacer/>
+                <Button
+                    id="closeButton"
+                    visible="false"
+                    tooltip="{i18n>template.close.tooltip}"
+                    icon="sap-icon://decline"
+                    press="onClosePress"/>
+            </Toolbar>
+        </headerToolbar>
+        <content> 
+            <Text id="textPlugin" text="template" class="textFontSize" textAlign="Center" width="100%"/>
+        </content>
+	    </Panel>		 -->
+      <VBox id='idHeaderVBox' justifyContent="Center" alignItems="Center">
+                <Title
+                    id="_IDGenTiMtle1"
+                    text="Finish Goods Expiry Date"
+                    level="H1"/>
+            </VBox>
+            <f:SimpleForm id="IdReportForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+                <f:content>
+                    <Label id="IDMaterialLabel"
+                        text="Material" 
+                        labelFor="IdMaterialInput"
+                        required="true"/>
+                    <Input 
+                        id="IdMaterialInput" 
+                        showValueHelp="true"
+                        valueHelpRequest="onMaterialValueHelpRequest"
+                        value="{viewModel>/formData/material}"
+                        valueState="{viewModel>/controls/materialInput/valueState}"
+                        valueStateText="{viewModel>/controls/materialInput/valueStateText}"
+                        change=".onMaterialInputChange"
+                        required="true" />
+                    <Label id="IDBatchLabel"
+                        text="Batch Number" 
+                        labelFor="IdBatchInput"
+                        required="true"/>
+                    <Input 
+                        id="IdBatchInput" 
+                        showValueHelp="true"
+                        valueHelpRequest="onBatchValueHelpRequest"
+                        enabled="{viewModel>/isMaterialSelected}"
+                        value="{viewModel>/formData/batchNumber}"                        
+                        valueState="{viewModel>/controls/batchInput/valueState}"
+                        valueStateText="{viewModel>/controls/batchInput/valueStateText}"
+                        required="true" />
+                    <Label id="IDManufacturingDateLabel"
+                        text="Manufacturing Date" 
+                        labelFor="IdMfgDateInput"/>
+                    <DatePicker id="IdMfgDatePicker"
+                        editable="false"
+                        value="{
+                            path: 'viewModel>/formData/productionDate',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions:{
+                                pattern: 'dd-MM-yyyy'
+                            }
+                        }"/>
+                    <Label id="IDCurrExpDateLabel"
+                        text="Current Expiry Date" 
+                        labelFor="IdCurrentExpDatePicker"/>
+                    <DatePicker id="IdCurrentExpDatePicker"
+                        editable="false"
+                        value="{
+                            path: 'viewModel>/formData/expiryDate',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions:{
+                                pattern: 'dd-MM-yyyy'
+                            }
+                        }"/>
+                    <Label id="IDNewExpDateLabel"
+                        text="Expiry Date Correction" 
+                        labelFor="IdNewExpDatePicker"/>
+                    <DatePicker id="IdNewExpDatePicker"                    
+                        editable="{viewModel>/isBatchSelected}"
+                        minDate="{viewModel>/formData/productionDate}"
+                        change=".onNewExpiryDateChange"
+                        value="{
+                            path: 'viewModel>/formData/expiryDateCorrection',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions:{
+                                pattern: 'dd-MM-yyyy'
+                            }
+                        }"/>
+                    <Label id="idActionsLabel"/>
+                    <HBox justifyContent="SpaceAround">
+                        <Button 
+                            text="Save" 
+                            type="Emphasized" 
+                            icon="sap-icon://save" 
+                            press=".onSaveExpiryDateChange"/>
+                        <Button text="Print" type="Emphasized" icon="sap-icon://print"/>
+                        <Button 
+                            text="Clear" 
+                            type="Emphasized" 
+                            icon="sap-icon://clear-filter"
+                            press=".onClearForm"/>
+                    </HBox>
+                </f:content>
+            </f:SimpleForm>
+
+        
+  
+</mvc:View>

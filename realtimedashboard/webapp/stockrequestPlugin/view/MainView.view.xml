@@ -1,0 +1,285 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    controllerName="company.custom.plugins.realtimedashboard.stockrequestPlugin.controller.MainView"
+    width="100%"
+    height="100%"
+>
+    <!-- <Panel 
+                id="panelPlugin"  
+                width="100%"
+                height="100%"
+                expandable="false"
+                expanded="false"
+                accessibleRole="Region"
+                backgroundDesign="Transparent"
+                class="sapUiNoContentPadding">  
+        <headerToolbar>
+            <Toolbar height="3rem">
+                <Button
+                    id="backButton"
+                    visible="false"
+                    text="{i18n>template.back.btn}"
+                    tooltip="{i18n>template.back.tooltip}"
+                    icon="sap-icon://nav-back"
+                    press="onBackPress"/>
+                <Title id="headerTitle" text=""/>
+                <ToolbarSpacer/>
+                <Button
+                    id="closeButton"
+                    visible="false"
+                    tooltip="{i18n>template.close.tooltip}"
+                    icon="sap-icon://decline"
+                    press="onClosePress"/>
+            </Toolbar>
+        </headerToolbar>
+        <content> 
+            <Text id="textPlugin" text="template" class="textFontSize" textAlign="Center" width="100%"/> -->
+     <f:DynamicPage
+        id="_IDGenDynamicPage1"
+        headerExpanded="{/headerExpanded}"
+    >
+        <!-- <f:title>
+                    <f:DynamicPageTitle id="_IDGenDynamicPageTitle1">
+                        <f:heading>
+                            <svm:SmartVariantManagement id="svm" showExecuteOnSelection="true" />
+                        </f:heading>
+                    </f:DynamicPageTitle>
+                </f:title> -->
+        <f:header>
+            <f:DynamicPageHeader
+                id="_IDGenDynamicPageHeader1"
+                pinnable="false"
+            >
+                <f:content>
+                    <FlexBox
+                        id="_IDGenFlexBox1M"
+                        justifyContent="Center"
+                        class="sapUiSmallMargin"
+                    >
+                        <!-- <ToolbarSpacer id="_IDGenToolbarSpacer14" /> -->
+
+                        <fb:FilterBar
+                            id="filterbar"
+                            useToolbar="false"
+                            search=".onSearch"
+                            filterChange=".onFilterChange"
+                            afterVariantLoad=".onAfterVariantLoad"
+                        >
+                            <fb:filterGroupItems>
+                                <fb:FilterGroupItem
+                                    id="idMaterialFBI"
+                                    name="material"
+                                    label="Material"
+                                    groupName="Group1"
+                                    visibleInFilterBar="true"
+                                >
+                                    <!-- <fb:control>
+                                        <MultiComboBox
+                                            id="_IDGenMultiComboBox1"
+                                            name="material"
+                                            width="900px"
+                                            selectionChange=".onSelectionChange"
+                                            items="{
+												path: 'data>/materials',
+												templateShareable: true
+											}"
+                                        >
+                                            <core:Item
+                                                id="_IDGenItem1"
+                                                key="{data>material}"
+                                                text="{data>material}"
+                                            />
+                                        </MultiComboBox>
+                                    </fb:control> -->
+                                    <fb:control>
+                                      <MultiInput
+                    id="inputOrder"
+                    showValueHelp="true"
+                    valueHelpRequest=".onValueHelpRequest"
+                    width="700px"
+                />
+                </fb:control>
+                                </fb:FilterGroupItem>
+                            </fb:filterGroupItems>
+                        </fb:FilterBar>
+                    </FlexBox>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table
+                id="table"
+                inset="false"
+                sticky="ColumnHeaders"
+                mode="MultiSelect"
+                selectionChange=".onSelectionChange"
+                items="{viewModel>/tabItems}">
+                <headerToolbar>
+                    <Toolbar id="_IDGenToolbar1">
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                        <Button
+                            id="RequestButton"
+                            text="Transfer Request"
+                            icon="sap-icon://request"
+                            press=".handleStockRequestSubmit"
+                            type="Emphasized"
+                            class="sapUiSmallMargin"
+                        />
+                        <!-- <Button
+                            id="delButton"
+                            text="Delete Row(s)"
+                            icon="sap-icon://delete"
+                            press="onDeleteRows"
+                        /> -->
+                        <!-- <Button id="editButton" text="Edit" icon="sap-icon://edit" press=".onEdit"/> -->
+                        <!-- <Button id="saveButton" text="Save" icon="sap-icon://save" press=".onSave"/> -->
+                        <Button
+                            id="clearButton"
+                            text="Clear"
+                            icon="sap-icon://clear-filter"
+                            press=".onClearFilters"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column
+                        id="_IDGenColumn2"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Material" />
+                    </Column>
+                    <Column
+                        id="_IDGenColumn3"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Description" />
+                    </Column>
+
+                    <Column
+                        id="_IDGenColumn5"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Required quantity" />
+                    </Column>
+                    <Column
+                        id="_IDGenColumn6"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Issue Storage Location" />
+                    </Column>
+
+                    <Column
+                        id="_IDGenColumn8"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Receive Storage Location" />
+                    </Column>
+                    <Column
+                        id="_IDGenColumn9"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Unit" />
+                    </Column>
+                    <Column><Text text="Action"/></Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <Text text="{viewModel>material}" />
+                        <Text text="{viewModel>description}" />
+                        <Input
+                            value="{viewModel>reqQty}"
+                            change=".onInputChange"/>
+                        <!-- <Input id="inputTarget2" value="{data>issueStorageLocation}" editable="{data>editMode}" change=".onInputChange"/>
+                                    <Input id="inputTarget3" value="{data>receiveStorageLocation}" editable="{data>editMode}" change=".onInputChange"/> -->
+                        <ComboBox
+                            name="issueStorageLocation"
+                            selectedKey="{viewModel>issueStorageLocation}"
+                            selectionChange="onStorageLocationChange"
+                            items="{
+                                path: 'viewModel>/storageLocations',
+                                templateShareable: true
+                            }">
+                            <core:Item key="{viewModel>storageLocation}" text="{viewModel>storageLocation}" />
+                        </ComboBox>
+                        <ComboBox
+                            name="receiveStorageLocation"
+                            selectedKey="{viewModel>receiveStorageLocation}"
+                            selectionChange="onStorageLocationChange"
+                            items="{
+                                path: 'viewModel>/storageLocations',
+                                templateShareable: true
+                            }">
+                            <core:Item key="{viewModel>storageLocation}" text="{viewModel>storageLocation}" />
+                        </ComboBox>
+
+                        <Text text="{viewModel>unitOfMeasure}" />
+                        <HBox>
+                            <Button 
+                                type="Reject"
+                                icon="sap-icon://delete"
+                                press="onDeleteRows" />
+                        </HBox>
+                    </ColumnListItem>
+                </items>
+                <dependents>
+                    <ColumnListItem id="idTableListItem">
+                        <Text text="{data>material}" />
+
+                        <Text text="{data>description}" />
+
+                        <Input
+                            value=""
+                            editable="{data>editMode}"
+                            change=".onInputChange"
+                        />
+                        <!-- <Input id="inputTarget2" value="{data>issueStorageLocation}" editable="{data>editMode}" change=".onInputChange"/>
+                                    <Input id="inputTarget3" value="{data>receiveStorageLocation}" editable="{data>editMode}" change=".onInputChange"/> -->
+                        <ComboBox
+                            name="issueStorageLocation"
+                            selectedKey="{data>issueStorageLocation}"
+                            selectionChange="onStorageLocationChange"
+                            items="{
+                                                              path: 'data>/tabItems',
+                                                              templateShareable: true
+                                                          }"
+                        >
+                            <core:Item
+                                key="{data>storageLocation}"
+                                text="{data>issueStorageLocation}"
+                            />
+                        </ComboBox>
+                        <ComboBox
+                            name="receiveStorageLocation"
+                            selectedKey="{data>receiveStorageLocation}"
+                            selectionChange="onStorageLocationChange"
+                            items="{
+                                                              path: 'data>/tabItems',
+                                                              templateShareable: true
+                                                          }"
+                        >
+                            <core:Item
+                                key="{data>storageLocation}"
+                                text="{data>receiveStorageLocation}"
+                            />
+                        </ComboBox>
+
+                        <Text text="{data>unitOfMeasure}" />
+                    </ColumnListItem>
+                </dependents>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

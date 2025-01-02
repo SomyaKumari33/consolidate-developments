@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+	xmlns:vh="sap.ui.comp.valuehelpdialog"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<vh:ValueHelpDialog
+        id="idBatchVHDia"
+        key="batchNumber"
+        title="Batch"
+        supportRanges="false"
+        supportMultiselect="false"
+		ok=".onBatchVHDiaOkPress"
+		cancel=".onBatchVHDiaCancelPress">
+        <vh:filterBar>
+            <fb:FilterBar id='idBatchVHDiaFB' search="onBatchVHDiaSearch">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem id="idBatchVHDiaFB-BatchFGI"
+                        groupName="group1"
+                        visibleInFilterBar="true"
+                        name="batchNumber"
+                        label="Batch">
+                        <fb:control>
+                            <Input id="idBatchVHDiaFB-BatchFGI-Input" 
+                                placeholder="Search for Batch..."/>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </vh:filterBar>
+	</vh:ValueHelpDialog>
+</core:FragmentDefinition>

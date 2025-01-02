@@ -1,0 +1,179 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form" xmlns:viz="sap.viz.ui5.controls" xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:svm="sap.ui.comp.smartvariants" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:m="sap.viz.ui5.controls" xmlns:chart="sap.viz.ui5.controls" xmlns:card="sap.f.cards"
+    xmlns:custom="custom.control" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    controllerName="company.custom.plugins.realtimedashboard.realtimedashboard.controller.MainView" width="100%"
+    height="100%">
+    <!-- <Panel 
+                id="panelPlugin"  
+                width="100%"
+                height="100%"
+                expandable="false"
+                expanded="false"
+                accessibleRole="Region"
+                backgroundDesign="Transparent"
+                class="sapUiNoContentPadding">  
+        <headerToolbar>
+            <Toolbar height="3rem">
+                <Button
+                    id="backButton"
+                    visible="false"
+                    text="{i18n>template.back.btn}"
+                    tooltip="{i18n>template.back.tooltip}"
+                    icon="sap-icon://nav-back"
+                    press="onBackPress"/>
+                <Title id="headerTitle" text=""/>
+                <ToolbarSpacer/>
+                <Button
+                    id="closeButton"
+                    visible="false"
+                    tooltip="{i18n>template.close.tooltip}"
+                    icon="sap-icon://decline"
+                    press="onClosePress"/>
+            </Toolbar>
+        </headerToolbar>
+        <content> 
+            <Text id="textPlugin" text="template" class="textFontSize" textAlign="Center" width="100%"/>
+        </content>
+	    </Panel>		 -->
+
+    <f:DynamicPage id="_IDGenDynammicPage1n" headerExpanded="{/headerExpanded}">
+        <f:header>
+            <f:DynamicPageHeader id="_IDGenDynanmicPmageHeader1" pinnable="false">
+                <f:content>
+                    <fb:FilterBar id="filternbars" persistencyKey="myPersKey" useToolbar="false" search=".onSearch"
+                        filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad" class="sapUiSmallMargin">
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem id="_IDGenFilterGroupItem21" name="workCenter" label="Work Center"
+                                groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="IdworkCenterInput" showValueHelp="true"
+                                        valueHelpRequest="onworkCenterValueHelpRequest" value="{data>/workCenter}"
+                                        valueState="{data>/controls/workCenterInput/valueState}"
+                                        valueStateText="{data>/controls/workCenterInput/valueStateText}"
+                                        change=".onworkCenterInputChange" required="false" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem id="_IDGenFilterGroupItem2" name="userId" label="Operator"
+                                groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="IdOperatorInput" showValueHelp="true"
+                                        valueHelpRequest="onOperatorValueHelpRequest" value="{data>/userId}"
+                                        valueState="{data>/controls/OperatorInput/valueState}"
+                                        valueStateText="{data>/controls/OperatorInput/valueStateText}"
+                                        enabled="{data>/isOperatorEnabled}" change=".onOperatorInputChange"
+                                        required="false" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem id="_IDGenFilterGroupItem3" name="order" label="Order"
+                                groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="IdOrderInput" placeholder="Enter Order"
+                                        valueState="{data>/controls/orderInput/valueState}"
+                                        valueStateText="{data>/controls/orderInput/valueStateText}"
+                                        change=".onInputFieldChange" required="false" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem id="_IDGenFilterGroupItem34" name="description"
+                                label="Material Description" groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="IdMaterialDescriptionInput" placeholder="Enter Description"
+                                        valueState="{data>/controls/descriptionInput/valueState}"
+                                        valueStateText="{data>/controls/descriptionInput/valueStateText}"
+                                        change=".onInputFieldChange" required="false" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem id="_IDGenFilterGroupItem31" name="resource" label="Resource"
+                                groupName="Group1" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="IdResourceInput" showValueHelp="true"
+                                        valueHelpRequest="onResourceValueHelpRequest" value="{data>/selectedResource}"
+                                        valueState="{data>/controls/ResourceInput/valueState}"
+                                        valueStateText="{data>/controls/ResourceInput/valueStateText}"
+                                        change=".onInputFieldChange" required="false" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem id="_IDGenFilterGroupItem3w" name="component" label="Component"
+                                groupName="component" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="IdComponentInput" placeholder="Enter Component"
+                                        valueState="{data>/controls/orderInput/valueState}"
+                                        valueStateText="{data>/controls/orderInput/valueStateText}"
+                                        change=".onInputFieldChange" required="false" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+                        <Toolbar id="_IDGenToolbar1">
+                            <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                            <Button id="clearButton1" text="Clear" icon="sap-icon://clear-filter"
+                                press=".onClearFilters" />
+                        </Toolbar>
+                    </fb:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <VBox id="tileContainer" items="{data>/items}">
+                <Panel width="100%" content="{data>resources}">
+                    <headerToolbar>
+                        <Toolbar>
+                            <Title text="{
+                                    path: 'data>workcenter',
+                                    formatter: '.panelHeaderFormatter'
+                                }" />
+                            <ToolbarSpacer id="_IDGenToolbarSpacer" />
+                        </Toolbar>
+                    </headerToolbar>
+
+                    <content>
+                        <f:Card id="_IDGenCard1" class="sapUiMediumMargin" width="350px">
+                            <f:header>
+                                <card:Header id="_IDGenHeader" press=".onCardTitlePress">
+                                    <card:customData>
+                                        <core:CustomData key="style-class" value="{data>status}" writeToDom="true" />
+                                    </card:customData>
+                                </card:Header>
+                            </f:header>
+                            <f:content>
+                                <VBox id="_IDGenVBox" class="sapUiSmallMargin" height="auto">
+                                    <HBox id="_IDGenHBox" alignItems="Center" justifyContent="SpaceBetween"
+                                        width="100%">
+                                        <Text id="_IDGenText1" text="{i18n>card-resourceLab}:" />
+                                        <Text id="_IDGenText2" text="{data>resource}" />
+                                    </HBox>
+                                    <HBox id="_IDGenHBox1" alignItems="Center" justifyContent="SpaceBetween"
+                                        width="100%">
+                                        <Text id="_IDGenText3" text="{i18n>card-operatorLab}:" />
+                                        <Text id="_IDGenText4" text="{data>customData/OPERATOR}" />
+                                    </HBox>
+                                    <HBox id="_IDGenHBox2" alignItems="Center" justifyContent="SpaceBetween"
+                                        width="100%">
+                                        <Text id="_IDGenText5" text="{i18n>card-orderLab}:" />
+                                        <Text id="_IDGenText6" text="{data>customData/ORDER}" />
+                                    </HBox>
+                                    <HBox id="_IDGenHBox3" alignItems="Center" justifyContent="SpaceBetween"
+                                        width="100%">
+                                        <Text id="_IDGenText7" text="{i18n>card-Component}:" />
+                                        <Text id="_IDGenText8" text="{data>customData/MATERIAL}" />
+                                    </HBox>
+                                    <HBox id="_IDGenHBox4" alignItems="Center" justifyContent="SpaceBetween"
+                                        width="100%">
+                                        <Text id="_IDGenText9" text="{i18n>card-target}:" />
+                                        <Text id="_IDGenText10" text="{data>DESCRIPTION}" />
+                                    </HBox>
+                                </VBox>
+                            </f:content>
+                        </f:Card>
+                    </content>
+                </Panel>
+            </VBox>
+        </f:content>
+
+        <!-- </content>
+	    </Panel>		 -->
+    </f:DynamicPage>
+</mvc:View>

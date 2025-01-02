@@ -1,0 +1,70 @@
+{
+	"components": [
+		{
+			"id": "realtimedashboard",
+			"type": "VIEW_PLUGIN",
+			"allowMultipleInstances": false,
+			"name": "company.custom.plugins.realtimedashboard.realtimedashboard",
+			"propertyEditor": "company.custom.plugins.realtimedashboard.realtimedashboard.builder.PropertyEditor",
+			"i18n": "company.custom.plugins.realtimedashboard.realtimedashboard.i18n.i18n",
+            "productionProcessEnabled": true,
+           "productionProcessTitle": "realtimedashboard",
+			"supportedPodTypes": ["WORK_CENTER","OPERATION","ORDER","OTHER"]
+		},
+		{
+			"id": "chartrealPlugin",
+			"type": "VIEW_PLUGIN",
+			"allowMultipleInstances": false,
+			"name": "company.custom.plugins.realtimedashboard.chartrealPlugin",
+			"propertyEditor": "company.custom.plugins.realtimedashboard.chartrealPlugin.builder.PropertyEditor",
+			"i18n": "company.custom.plugins.realtimedashboard.chartrealPlugin.i18n.i18n",
+            "productionProcessEnabled": true,
+           "productionProcessTitle": "chartrealPlugin",
+			"supportedPodTypes": ["WORK_CENTER","OPERATION","ORDER","OTHER"]
+		},
+		{
+			"id": "expirydate",
+			"type": "VIEW_PLUGIN",
+			"allowMultipleInstances": false,
+			"name": "company.custom.plugins.realtimedashboard.expirydate",
+			"propertyEditor": "company.custom.plugins.realtimedashboard.expirydate.builder.PropertyEditor",
+			"i18n": "company.custom.plugins.realtimedashboard.expirydate.i18n.i18n",
+            "productionProcessEnabled": true,
+           "productionProcessTitle": "expirydate",
+			"supportedPodTypes": ["WORK_CENTER","OPERATION","ORDER","OTHER"]
+		},
+		{
+			"id": "historicalPlugin",
+			"type": "VIEW_PLUGIN",
+			"allowMultipleInstances": false,
+			"name": "company.custom.plugins.realtimedashboard.historicalPlugin",
+			"propertyEditor": "company.custom.plugins.realtimedashboard.historicalPlugin.builder.PropertyEditor",
+			"i18n": "company.custom.plugins.realtimedashboard.historicalPlugin.i18n.i18n",
+            "productionProcessEnabled": true,
+           "productionProcessTitle": "historicalPlugin",
+			"supportedPodTypes": ["WORK_CENTER","OPERATION","ORDER","OTHER"]
+		},
+		{
+			"id": "stockrequestPlugin",
+			"type": "VIEW_PLUGIN",
+			"allowMultipleInstances": false,
+			"name": "company.custom.plugins.realtimedashboard.stockrequestPlugin",
+			"propertyEditor": "company.custom.plugins.realtimedashboard.stockrequestPlugin.builder.PropertyEditor",
+			"i18n": "company.custom.plugins.realtimedashboard.stockrequestPlugin.i18n.i18n",
+            "productionProcessEnabled": true,
+           "productionProcessTitle": "stockrequestPlugin",
+			"supportedPodTypes": ["WORK_CENTER","OPERATION","ORDER","OTHER"]
+		},
+		{
+			"id": "PMNotification",
+			"type": "VIEW_PLUGIN",
+			"allowMultipleInstances": false,
+			"name": "company.custom.plugins.realtimedashboard.PMNotification",
+			"propertyEditor": "company.custom.plugins.realtimedashboard.PMNotification.builder.PropertyEditor",
+			"i18n": "company.custom.plugins.realtimedashboard.PMNotification.i18n.i18n",
+            "productionProcessEnabled": true,
+           "productionProcessTitle": "PMNotification",
+			"supportedPodTypes": ["WORK_CENTER","OPERATION","ORDER","OTHER"]
+		}  
+	]
+}

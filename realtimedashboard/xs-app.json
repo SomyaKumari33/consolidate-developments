@@ -1,0 +1,14 @@
+{
+  "welcomeFile": "/realtimedashboard/index.html",
+  "authenticationMethod": "none",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "^/realtimedashboard/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    }
+  ]
+}

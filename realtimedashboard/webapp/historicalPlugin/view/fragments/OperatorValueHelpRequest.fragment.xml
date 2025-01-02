@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+xmlns:vh="sap.ui.comp.valuehelpdialog"
+xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+xmlns:fb="sap.ui.comp.filterbar"
+xmlns="sap.m"
+xmlns:core="sap.ui.core">
+<vh:ValueHelpDialog id="idOperatorVHDia"
+key="userId"
+title="Operator"
+supportRanges="false"
+supportMultiselect="false"
+ok=".onOperatorVHDiaOKPress"
+cancel=".onOperatorVHDiaCancelPress">
+<vh:filterBar>
+<fb:FilterBar id="idOperatorVHDiaFB" search="onOperatorVHDiaSearch">
+<fb:filterGroupItems>
+<fb:FilterGroupItem id="idOperatorVHDiaFB-OperatorFGI" groupName="group1" visibleInFilterBar="true" name="userId" label="Operator">
+<fb:control>
+<Input id="idOperatorVHDiaFB-OperatorFGI-Input" placeholder="Search for Operator...."/>
+</fb:control>
+</fb:FilterGroupItem>
+</fb:filterGroupItems>
+</fb:FilterBar>
+</vh:filterBar>
+</vh:ValueHelpDialog>
+</core:FragmentDefinition>

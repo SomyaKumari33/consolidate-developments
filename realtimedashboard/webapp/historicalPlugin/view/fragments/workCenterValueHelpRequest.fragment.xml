@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+xmlns:vh="sap.ui.comp.valuehelpdialog"
+xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+xmlns:fb="sap.ui.comp.filterbar"
+xmlns="sap.m"
+xmlns:core="sap.ui.core">
+<vh:ValueHelpDialog id="idworkCenterVHDia"
+key="workCenter"
+title="workCenter"
+supportRanges="false"
+supportMultiselect="false"
+ok=".onworkCenterVHDiaOKPress"
+cancel=".onworkCenterVHDiaCancelPress">
+<vh:filterBar>
+<fb:FilterBar id="idworkCenterVHDiaFB" search="onworkCenterVHDiaSearch">
+<fb:filterGroupItems>
+<fb:FilterGroupItem id="idworkCenterVHDiaFB-workCenterFGI" groupName="group1" visibleInFilterBar="true" name="workCenter" label="workCenter">
+<fb:control>
+<Input id="idworkCenterVHDiaFB-workCenterFGI-Input" placeholder="Search for workCenter...."/>
+</fb:control>
+</fb:FilterGroupItem>
+</fb:filterGroupItems>
+</fb:FilterBar>
+</vh:filterBar>
+</vh:ValueHelpDialog>
+</core:FragmentDefinition>

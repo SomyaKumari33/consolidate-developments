@@ -1,0 +1,32 @@
+<core:FragmentDefinition
+	xmlns:vh="sap.ui.comp.valuehelpdialog"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<vh:ValueHelpDialog
+        id="idValueHelpDialog"
+        key="material"
+        title="Material"
+        supportRanges="false"
+        supportMultiselect="false"
+		ok=".onMaterialVHDiaOkPress"
+		cancel=".onMaterialVHDiaCancelPress">
+        <vh:filterBar>
+            <fb:FilterBar id='idVhDiaFB' search="onMaterialVHDiaSearch">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem id="idVhDiaFB-MaterialFGI"
+                        groupName="group1"
+                        visibleInFilterBar="true"
+                        name="material"
+                        label="Material">
+                        <fb:control>
+                            <Input id="idVhDiaFB-MaterialFGI-Input" 
+                                placeholder="Search for Material..."/>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </vh:filterBar>
+	</vh:ValueHelpDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+xmlns:vh="sap.ui.comp.valuehelpdialog"
+xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+xmlns:fb="sap.ui.comp.filterbar"
+xmlns="sap.m"
+xmlns:core="sap.ui.core">
+<vh:ValueHelpDialog id="idResourceVHDia"
+key="resource"
+title="resource"
+supportRanges="false"
+supportMultiselect="false"
+ok=".onResourceVHDiaOKPress"
+cancel=".onResourceVHDiaCancelPress">
+<vh:filterBar>
+<fb:FilterBar id="idResourceVHDiaFB" search="onResourceVHDiaSearch">
+<fb:filterGroupItems>
+<fb:FilterGroupItem id="idResourceVHDiaFB-ResourceFGI" groupName="group1" visibleInFilterBar="true" name="resource" label="Resource">
+<fb:control>
+<Input id="idResourceVHDiaFB-ResourceFGI-Input" placeholder="Search for Resource...."/>
+</fb:control>
+</fb:FilterGroupItem>
+</fb:filterGroupItems>
+</fb:FilterBar>
+</vh:filterBar>
+</vh:ValueHelpDialog>
+</core:FragmentDefinition>

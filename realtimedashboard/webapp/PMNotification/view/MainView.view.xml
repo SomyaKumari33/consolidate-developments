@@ -1,0 +1,239 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" 
+xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified"
+xmlns:html="http://www.w3.org/1999/xhtml" controllerName="company.custom.plugins.realtimedashboard.PMNotification.controller.MainView" width="100%" height="100%">
+		
+        <!-- <Panel 
+                id="panelPlugin"  
+                width="100%"
+                height="100%"
+                expandable="false"
+                expanded="false"
+                accessibleRole="Region"
+                backgroundDesign="Transparent"
+                class="sapUiNoContentPadding">  
+        <headerToolbar>
+            <Toolbar height="3rem">
+                <Button
+                    id="backButton"
+                    visible="false"
+                    text="{i18n>template.back.btn}"
+                    tooltip="{i18n>template.back.tooltip}"
+                    icon="sap-icon://nav-back"
+                    press="onBackPress"/>
+                <Title id="headerTitle" text=""/>
+                <ToolbarSpacer/>
+                <Button
+                    id="closeButton"
+                    visible="false"
+                    tooltip="{i18n>template.close.tooltip}"
+                    icon="sap-icon://decline"
+                    press="onClosePress"/>
+            </Toolbar>
+        </headerToolbar>
+        <content> 
+            <Text id="textPlugin" text="template" class="textFontSize" textAlign="Center" width="100%"/>
+        </content>
+	    </Panel>		 -->
+         <VBox
+                id='idHeaderVBox'
+                justifyContent="Center"
+                alignItems="Center"
+            >
+                <Title
+                    id="_IDGenTiMtle1"
+                    text="Equipment Management "
+                    level="H1"
+                />
+            </VBox>
+            <f:SimpleForm
+                id="IdReportForm"
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false"
+            >
+                <f:content>
+                    <Label
+                        id="IDresourceLabel"
+                        text="Equipment"
+                        labelFor="IdresourceInput"
+                        required="true"
+                    />
+                    <Input
+                        id="IdresourceInput"
+                        showValueHelp="true"
+                        valueHelpRequest="onResourceValueHelpRequest"
+                        value="{data>/resource}"
+                        valueState="{data>/controls/resourceInput/valueState}"
+                        valueStateText="{data>/controls/resourceInput/valueStateText}"
+                        change=".onresourceInputChange"
+                        required="true"
+                    />
+                    <Label
+                        id="IDBatchLabel"
+                        text="Notification Type"
+                        labelFor="IdBatchInput"
+                        required="true"
+                    />
+                    <!-- <Input 
+                        id="IdBatchInput" 
+                        showValueHelp="true"
+                        valueHelpRequest="onBatchValueHelpRequest"
+                        enabled="{data>/isresourceSelected}"
+                        value="{data>/formData/batchNumber}"                        
+                        valueState="{data>/controls/batchInput/valueState}"
+                        valueStateText="{data>/controls/batchInput/valueStateText}"
+                        required="true" /> -->
+                    <ComboBox
+                        id="_IDGenMultiComboBox1"
+                        name="Product"
+                        width="700px"
+                        selectionChange=".onSelectionChange"
+                        items="{
+                                                path: 'data>/tabItems',
+                                                templateShareable: true
+                                            }"
+                    >
+                        <core:Item
+                            id="_IDGenItem1"
+                            key="{data>sfc}"
+                            text="{data>Product}"
+                        />
+                    </ComboBox>
+                    <Label
+                        id="IDManufacturingDateLabel"
+                        text="Description"
+                        labelFor="IdMfgDateInput"
+                    />
+                    <TextArea
+                        id="descriptionTextArea"
+                        rows="5"
+                        placeholder="Enter description here..."
+                    />
+                    <Label
+                        id="IDReportedby"
+                        text="Reported By"
+                        labelFor="IdReportedbyInput"
+                    />
+                <Input id="reportedByInput" placeholder="e.g., user@example.com" editable="true" /> <!-- Placeholder for User ID -->
+
+                    <!-- Pre-filled User ID -->
+                    <Label
+                        id="IDBreakdownStatus:"
+                        text="Equipment Status"
+                        labelFor="IdBreakdownStatusInput"
+                    />
+                    <!-- <Switch
+                        id="breakdownSwitch"
+                        state="false"
+                    /> -->
+                     <ComboBox
+                        id="_IDGenMultiComboBox21"
+                        name="status"
+                        width="700px"
+                        selectionChange=".onSelectionChange"
+                        items="{
+                                                path: 'data>/',
+                                                templateShareable: true
+                                            }"
+                    >
+                        <core:Item
+                            id="_IDGenItem21"
+                            key="{data>status}"
+                            text="{data>status}"
+                        />
+                    </ComboBox>
+                    <Label
+                        id="IDAttachPhoto"
+                        text="Attach Photo"
+                        labelFor="fileUploader"
+                    />
+                    <u:FileUploader id="fileUploader"
+                                    uploadUrl="YOUR_UPLOAD_URL_HERE" 
+                                    fileType="jpg,png,jpeg"
+                                    mimeType="image/jpeg,image/png"
+                                    change="onFileChange"
+                                    uploadComplete="onUploadComplete"
+                                    icon="sap-icon://upload"
+                                    iconOnly="true" />
+                    <Button
+                        id="_IDGenButton"
+                        text="Upload Photo"
+                        press="onUploadPhoto"
+                    />
+
+                    <Label
+                        id="IDCurrExpDateLabel"
+                        text="Priority"
+                        labelFor="IdCurrentExpDatePicker"
+                    />
+                    <ComboBox
+                        id="_IDGenMultiComboBox2"
+                        name="Product"
+                        width="700px"
+                        selectionChange=".onSelectionChange"
+                        items="{
+                                                path: 'data>/tabItems',
+                                                templateShareable: true
+                                            }"
+                    >
+                        <core:Item
+                            id="_IDGenItem2"
+                            key="{data>sfc}"
+                            text="{data>Product}"
+                        />
+                    </ComboBox>
+                    <!-- <Title id="_IDGenTitle" text="Notification Tracking" level="H3" /> -->
+                    <Label
+                        id="_IDGenLabel2"
+                        text="Notification Tracking Status"
+                        labelFor="IdCurrentExpDatePicker"
+                    />
+                    <Text
+                        id="notificationStatusText"
+                        text=""
+                    />
+                    <!-- Notification Status Display -->
+
+                    <Label id="idActionsLabel" />
+                    <HBox
+                        id="_IDGenHBox"
+                        justifyContent="SpaceAround"
+                    >
+                        <Button
+                            id="_IDGenButton1"
+                            text="Create Notification"
+                            type="Emphasized"
+                            icon="sap-icon://bell"
+                            press=".onCreateNotification"
+                        />
+                        <!-- <Button
+                            id="_IDGenButton2"
+                            text="Notification Closure Alert"
+                            type="Emphasized"
+                            icon="sap-icon://alert"
+                        /> -->
+                        <Button
+                            id="_IDGenButton3"
+                            text="Clear"
+                            type="Emphasized"
+                            icon="sap-icon://clear-filter"
+                            press=".onClearForm"
+                        />
+                    </HBox>
+                </f:content>
+            </f:SimpleForm>
+  
+</mvc:View>
